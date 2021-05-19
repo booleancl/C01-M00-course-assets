@@ -1,0 +1,58 @@
+<head>
+  <meta charset="utf-8">
+  <title>{{ site.title }}-{{page.title}}</title>
+  <meta name="description" content="{{ site.description }}">
+  <meta name="author" content="{{ site.author }}">
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/theme/simple.min.css" id="theme">
+
+  <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+      <!--
+        INTRO: configurar opciones del intro en _config.yml
+      -->
+      <section 
+        class="intro"
+        data-separator="^\n---\n$" 
+        data-separator-vertical="^\n--\n$"
+        data-background-image="{{site.intro.background-image-path}}"
+        data-background-position="right"
+        data-state="intro"
+      >
+        <header>
+          <img src="https://res.cloudinary.com/boolean-spa/image/upload/v1620172881/logo-horizontal_hqou69.png" alt="logo-boolean">
+        </header>
+        <div class="title">
+          <h1>APLICACIÓN WEB</h1>
+          <h2>FULLSTACK JAVASCRIPT</h2>
+        </div>
+      </section>
+      
+      {% for post in site.posts reversed %}
+        <section
+          class="slide"
+          data-markdown
+          data-separator="^\n---\n$"
+          data-separator-vertical="^\n--\n$"
+          data-state="slide"
+        >
+          <script type="text/template">
+            {{ post.content }}  
+          </script>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/reveal.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/markdown/markdown.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.1.0/plugin/zoom/zoom.min.js"></script>
+
+  <script src="{{ "/assets/js/main.js" | relative_url }}"></script>
+</body>
